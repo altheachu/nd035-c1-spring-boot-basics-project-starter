@@ -12,11 +12,24 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/css/**", "/js/**")
+                .antMatchers("/signup","/css/**", "/js/**", "/h2/**")
                 .permitAll()
                 .anyRequest().authenticated();
+
         http.formLogin()
                 .loginPage("/login").permitAll();
+
+        http.formLogin()
+                .defaultSuccessUrl("/home", true);
+
+        http.logout(logout -> logout
+                .logoutUrl("home/logout")
+                .logoutSuccessUrl("/login"));
+
+        http.csrf()
+                .ignoringAntMatchers("/h2/**");
+
+        http.headers().frameOptions().sameOrigin();
     }
 
 }
