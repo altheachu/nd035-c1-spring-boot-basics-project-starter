@@ -6,4 +6,8 @@ public interface userService {
 
     //新增用戶的方法
     Boolean addNewUser(User user);
+
+    //查詢用戶資料的方法
+    User getUser(String username);
+
 }

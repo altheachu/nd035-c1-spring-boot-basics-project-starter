@@ -26,7 +26,7 @@ public class signupController {
     public String add(@RequestParam(value="firstName", required=true) String firstname,
                       @RequestParam(value="lastName", required=true) String lastname,
                       @RequestParam(value="username", required=true) String username,
-                      @RequestParam(value="username", required=true) String password,
+                      @RequestParam(value="password", required=true) String password,
                       Model model){
 
         Boolean signupResult = false;// 註冊結果
