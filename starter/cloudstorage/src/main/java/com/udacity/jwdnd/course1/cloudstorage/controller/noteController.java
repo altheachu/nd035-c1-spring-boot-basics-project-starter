@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class noteController {
 
     @PostMapping("/note/add")
-    public String logindo(String noteTitle, String noteDescription){
+    public String addNote(String noteTitle, String noteDescription){
 
-        return "success";
-
+        return "result";
     }
 
 }
