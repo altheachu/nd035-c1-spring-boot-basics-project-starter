@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/login")
 public class loginController {
 
     private userServiceImpl userService;
@@ -16,23 +18,9 @@ public class loginController {
         this.userService = userService;
     }
 
-    @GetMapping("/login")
+    @GetMapping
     public String login(){
         return "login";
-    }
-
-    @PostMapping("/loginDo")
-    public String logindo(String username, String password){
-
-        String url = "login";
-
-        User user = userService.getUser(username);
-        if(user != null){
-            if(user.getPassword().equals(password)){
-                url = "home";
-            }
-        }
-        return url;
     }
 
 }
