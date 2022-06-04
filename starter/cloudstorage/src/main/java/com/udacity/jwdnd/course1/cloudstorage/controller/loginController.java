@@ -20,6 +20,8 @@ public class loginController {
 
     @GetMapping
     public String login(){
+
+
         return "login";
     }
 
