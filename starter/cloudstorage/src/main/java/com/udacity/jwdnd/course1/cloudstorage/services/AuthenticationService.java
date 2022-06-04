@@ -16,7 +16,7 @@ public class AuthenticationService implements AuthenticationProvider {
     private UserMapper userMapper;
     private HashService hashService;
 
-    public AuthenticationService(userServiceImpl userService, HashService hashService) {
+    public AuthenticationService(UserMapper userMapper, HashService hashService) {
         this.userMapper = userMapper;
         this.hashService = hashService;
     }
