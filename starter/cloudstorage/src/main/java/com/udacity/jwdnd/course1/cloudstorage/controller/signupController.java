@@ -34,11 +34,17 @@ public class signupController {
 
         Boolean signupResult = false;// 註冊結果
 
-        User user = new User(null,username,null,password,firstname,lastname);
-        signupResult = userService.addNewUser(user);
+        User user = userService.getUser(username);
+
+        if(user==null){
+            user = new User(null,username,null,password,firstname,lastname);
+            signupResult = userService.addNewUser(user);
+        }
 
         if(signupResult){// 新增用戶成功
            model.addAttribute("signUpStatus",true);
+        }else{// 新增用戶發生錯誤
+           model.addAttribute("signUpStatus",false);
         }
 
         return "signup";
