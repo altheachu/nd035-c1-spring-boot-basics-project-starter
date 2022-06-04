@@ -13,8 +13,4 @@ public class homeController {
         return "home";
     }
 
-    @PostMapping("/logout")
-    public String logoutView(){
-        return "redirect:/login?logout";
-    }
 }
