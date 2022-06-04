@@ -1,14 +1,12 @@
-package com.udacity.jwdnd.course1.cloudstorage.services.servicesImpl;
+package com.udacity.jwdnd.course1.cloudstorage.services;
 
 import com.udacity.jwdnd.course1.cloudstorage.mapper.UserMapper;
 import com.udacity.jwdnd.course1.cloudstorage.model.User;
-import com.udacity.jwdnd.course1.cloudstorage.services.HashService;
-import com.udacity.jwdnd.course1.cloudstorage.services.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class userServiceImpl implements userService {
+public class userServiceImpl{
 
     @Autowired
     private UserMapper userMapper;
@@ -18,7 +16,7 @@ public class userServiceImpl implements userService {
         this.userMapper = userMapper;
         this.hashService = hashService;
     }*/
-    @Override
+
     public Boolean addNewUser(User user) {
         Boolean result = false;
         int i = userMapper.addNewUser(user);
@@ -28,7 +26,6 @@ public class userServiceImpl implements userService {
         return result;
     }
 
-    @Override
     public User getUser(String username) {
         return userMapper.selectByUsername(username);
     }

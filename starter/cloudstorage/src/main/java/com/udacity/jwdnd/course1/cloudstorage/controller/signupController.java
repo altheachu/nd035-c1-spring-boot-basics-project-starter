@@ -1,7 +1,7 @@
 package com.udacity.jwdnd.course1.cloudstorage.controller;
 
 import com.udacity.jwdnd.course1.cloudstorage.model.User;
-import com.udacity.jwdnd.course1.cloudstorage.services.userService;
+import com.udacity.jwdnd.course1.cloudstorage.services.userServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class signupController {
 
-    @Autowired
-    userService UserService;
+    private userServiceImpl userService;
+
+    public signupController(userServiceImpl userService) {
+        this.userService = userService;
+    }
 
     @GetMapping
     public String signup(){
@@ -32,7 +35,7 @@ public class signupController {
         Boolean signupResult = false;// 註冊結果
 
         User user = new User(null,username,null,password,firstname,lastname);
-        signupResult = UserService.addNewUser(user);
+        signupResult = userService.addNewUser(user);
 
         if(signupResult){// 新增用戶成功
            model.addAttribute("signUpStatus",true);

@@ -14,6 +14,6 @@ public interface UserMapper {
     int addNewUser(User user);
 
     @Select("SELECT * FROM USERS WHERE username = #{username}")
-    User selectByUsername(String username);/*備註*/
+    User selectByUsername(String username);
 
 }
