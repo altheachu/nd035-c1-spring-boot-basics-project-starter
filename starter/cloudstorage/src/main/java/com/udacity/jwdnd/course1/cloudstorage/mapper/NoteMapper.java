@@ -12,7 +12,7 @@ public interface NoteMapper {
     int addNote(Note note);
 
     @Select("SELECT * FROM NOTES WHERE noteId = #{noteId}")
-    User selectNote(Integer noteId);
+    Note selectNote(Integer noteId);
 
     @Delete("DELETE FROM NOTES WHERE noteId = #{noteId}")
     void removeNote(Integer noteId);

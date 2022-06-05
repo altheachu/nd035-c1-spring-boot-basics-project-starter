@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/login")
 public class loginController {
 
     private userServiceImpl userService;
@@ -18,9 +17,8 @@ public class loginController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping(value = {"/login","/"})
     public String login(){
-
 
         return "login";
     }
