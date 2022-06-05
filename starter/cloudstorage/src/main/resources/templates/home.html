@@ -68,20 +68,20 @@
                         <div class="table-responsive">
                             <table class="table table-striped" id="userTable">
                                 <thead>
-                                    <tr>
+                                    <tr th:each="note:${notes}">
                                         <th style="width: 20%" scope="col"></th>
                                         <th style="width: 20%" scope="col">Title</th>
                                         <th style="width: 60%" scope="col">Description</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody th:each="allNote:${clientNotes}">
                                     <tr>
                                         <td>
                                             <button type="button" class="btn btn-success">Edit</button>
                                             <a class="btn btn-danger">Delete</a>
                                         </td>
-                                        <th scope="row">Example Note Title</th>
-                                        <td>Example Note Description </td>
+                                        <th scope="row" th:text="${allNote.noteTitle}">Example Note Title</th>
+                                        <td th:text="${allNote.noteDescription}">Example Note Description </td>
                                     </tr>
                                 </tbody>
                             </table>
