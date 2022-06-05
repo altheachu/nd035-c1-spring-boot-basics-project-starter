@@ -7,6 +7,8 @@ import com.udacity.jwdnd.course1.cloudstorage.services.noteServiceImpl;
 import com.udacity.jwdnd.course1.cloudstorage.services.userServiceImpl;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -23,15 +25,16 @@ public class noteController {
     }
 
     @PostMapping("/note/add")
-    public String addNote(Authentication authentication, Note note){
+    public String addNote(Authentication authentication, Note note, Model model){
         // confirm the user id
-        User user = userService.getUser(authentication.getClass().getName());
+        User user = userService.getUser(authentication.getName());
         Integer userId = user.getUserId();
         Integer noteId = note.getNoteId();
         Note dbNote = noteService.getNote(noteId);
 
         if(dbNote==null){
             noteService.InsertNote(note, userId);
+            model.addAttribute("successMessage",true);
         }
 
         return "result";

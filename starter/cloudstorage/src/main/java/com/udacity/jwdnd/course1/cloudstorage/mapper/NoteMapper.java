@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface NoteMapper {
 
-    @Insert("INSERT INTO NOTES (userId, notetitle, notedescription) VALUES(#{userId}, #{notetitle}, #{notedescription})")
+    @Insert("INSERT INTO NOTES (userId, noteTitle, noteDescription) VALUES(#{userId}, #{noteTitle}, #{noteDescription})")
     @Options(useGeneratedKeys = true, keyProperty = "noteId")
     int addNote(Note note);
 
@@ -17,7 +17,7 @@ public interface NoteMapper {
     @Delete("DELETE FROM NOTES WHERE noteId = #{noteId}")
     void removeNote(Integer noteId);
 
-    @Update("UPDATE NOTES SET notetitle = #{notetitle}, notedescription = #{notedescription} WHERE noteid = #{noteid}")
+    @Update("UPDATE NOTES SET noteTitle = #{noteTitle}, noteDescription = #{noteDescription} WHERE noteId = #{noteId}")
     int updateNote(Note note);
 
 }
