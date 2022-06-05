@@ -77,8 +77,10 @@
                                 <tbody th:each="allNote:${clientNotes}">
                                     <tr>
                                         <td>
-                                            <button type="button" class="btn btn-success">Edit</button>
-                                            <a class="btn btn-danger">Delete</a>
+                                            <button type="button" class="btn btn-success">
+                                                    Edit
+                                            </button>
+                                            <a class="btn btn-danger" th:href="@{'/note/' + ${allNote.noteId} + '/delete'}">Delete</a>
                                         </td>
                                         <th scope="row" th:text="${allNote.noteTitle}">Example Note Title</th>
                                         <td th:text="${allNote.noteDescription}">Example Note Description </td>
