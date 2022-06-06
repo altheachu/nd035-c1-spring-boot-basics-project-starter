@@ -21,10 +21,16 @@ public class noteServiceImpl {
 
     public List<Note> getAllNote(Integer userId){return noteMapper.getNoteForUser(userId);}
 
-    public void InsertNote(Note note, Integer userId){
+    public void insertNote(Note note, Integer userId){
         Note newNote = new Note(null, note.getNoteTitle(), note.getNoteDescription(),userId);
         noteMapper.addNote(newNote);
     }
+
+    public void updateNote(Note note, Integer userId){
+        Note newNote = new Note(note.getNoteId(), note.getNoteTitle(), note.getNoteDescription(),userId);
+        noteMapper.updateNote(newNote);
+    }
+
     public void deleteNote(Integer noteId){
         noteMapper.removeNote(noteId);
     }

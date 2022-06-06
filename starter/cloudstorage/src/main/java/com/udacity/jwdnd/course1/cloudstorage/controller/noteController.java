@@ -36,7 +36,10 @@ public class noteController {
         Note dbNote = noteService.getNote(noteId);
 
         if(dbNote==null){
-            noteService.InsertNote(note, userId);
+            noteService.insertNote(note, userId);
+            model.addAttribute("successMessage",true);
+        }else{
+            noteService.updateNote(note, userId);
             model.addAttribute("successMessage",true);
         }
 
