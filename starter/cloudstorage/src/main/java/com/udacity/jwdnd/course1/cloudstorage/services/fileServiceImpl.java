@@ -1,0 +1,28 @@
+package com.udacity.jwdnd.course1.cloudstorage.services;
+
+import com.udacity.jwdnd.course1.cloudstorage.mapper.FileMapper;
+import com.udacity.jwdnd.course1.cloudstorage.model.File;
+import com.udacity.jwdnd.course1.cloudstorage.model.User;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+@Service
+public class fileServiceImpl {
+
+    private FileMapper fileMapper;
+
+    public fileServiceImpl(FileMapper fileMapper) {
+        this.fileMapper = fileMapper;
+    }
+
+    public int upload(File file, MultipartFile multipartFile) throws Exception{
+
+        file.setFileName(multipartFile.getOriginalFilename());
+        file.setContentType(multipartFile.getContentType());
+        file.setFileSize(String.valueOf(multipartFile.getSize()));
+        file.setFileData(multipartFile.getBytes());
+        return fileMapper.addFile(file);
+    }
+
+
+
+}
