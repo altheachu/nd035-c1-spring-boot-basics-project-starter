@@ -5,6 +5,9 @@ import com.udacity.jwdnd.course1.cloudstorage.model.File;
 import com.udacity.jwdnd.course1.cloudstorage.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+
 @Service
 public class fileServiceImpl {
 
@@ -14,7 +17,11 @@ public class fileServiceImpl {
         this.fileMapper = fileMapper;
     }
 
-    public int upload(File file, MultipartFile multipartFile) throws Exception{
+    public List<File> listAll(Integer userId){
+        return fileMapper.list(userId);
+    }
+
+    public Integer upload(File file, MultipartFile multipartFile) throws Exception{
 
         file.setFileName(multipartFile.getOriginalFilename());
         file.setContentType(multipartFile.getContentType());

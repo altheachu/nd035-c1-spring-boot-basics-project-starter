@@ -36,6 +36,7 @@ public class fileController {
         Integer userId = user.getUserId();
         file.setUserId(userId);
         fileService.upload(file,multipartFile);
+        model.addAttribute("listOfFiles",fileService.listAll(userId));
         return "home";
 
     }
