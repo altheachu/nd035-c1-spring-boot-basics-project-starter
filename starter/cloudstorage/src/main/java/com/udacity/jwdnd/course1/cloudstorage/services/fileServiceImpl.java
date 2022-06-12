@@ -30,6 +30,13 @@ public class fileServiceImpl {
         return fileMapper.addFile(file);
     }
 
+    public void delete(Integer fileId){
+        fileMapper.delete(fileId);
+    }
+
+    public File findById(Integer fileId){
+        return fileMapper.findById(fileId);
+    }
 
 
 }

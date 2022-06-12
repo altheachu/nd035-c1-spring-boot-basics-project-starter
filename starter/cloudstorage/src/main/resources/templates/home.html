@@ -54,7 +54,7 @@
                                         <a target="_blank" class="btn btn-success" th:href="@{'files/'+${allFile.fileId}+'/view'}">View</a>
                                         <a  class="btn btn-danger" th:href="@{'/files/' + ${allFile.fileId} + '/delete'}">Delete</a>
                                     </td>
-                                    <th scope="row" th:text="${allFile.filename}">ExampleFile.txt</th>
+                                    <th scope="row" th:text="${allFile.fileName}">ExampleFile.txt</th>
                                 </tr>
                                 </tbody>
                             </table>

@@ -32,7 +32,7 @@ public class noteController {
         // confirm the user id
         User user = userService.getUser(authentication.getName());
         Integer userId = user.getUserId();
-        Integer noteId = note.getNoteId();// string<-->integer cast problem
+        Integer noteId = note.getNoteId();
         Note dbNote = noteService.getNote(noteId);
 
         if(dbNote==null){
