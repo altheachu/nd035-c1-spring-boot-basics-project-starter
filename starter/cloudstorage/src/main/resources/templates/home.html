@@ -51,7 +51,7 @@
                                 <tbody th:each="allFile:${listOfFiles}">
                                 <tr>
                                     <td>
-                                        <a target="_blank" class="btn btn-success" th:href="@{'files/'+${allFile.fileId}+'/view'}">View</a>
+                                        <a target="_blank" class="btn btn-success" th:href="@{${allFile.fileId}+'/view'}">View</a>
                                         <a  class="btn btn-danger" th:href="@{'/files/' + ${allFile.fileId} + '/delete'}">Delete</a>
                                     </td>
                                     <th scope="row" th:text="${allFile.fileName}">ExampleFile.txt</th>
@@ -137,15 +137,15 @@
                                         <th style="width: 25%" scope="col">Password</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody th:each="allCredential:${listOfCredentials}">
                                 <tr>
                                     <td>
                                         <button type="button" class="btn btn-success">Edit</button>
                                         <a class="btn btn-danger">Delete</a>
                                     </td>
-                                    <th scope="row">Example Credential URL</th>
-                                    <td>Example Credential Username</td>
-                                    <td>Example Credential Password</td>
+                                    <th scope="row" th:text="${allCredential.url}">Example Credential URL</th>
+                                    <td th:text="${allCredential.username}">Example Credential Username</td>
+                                    <td th:text="${allCredential.password}">Example Credential Password</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -161,7 +161,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="#" method="POST">
+                                        <form action="#" method="POST" th:action="@{/credentials}">
                                             <input type="hidden" name="credentialId" id="credential-id">
                                             <div class="form-group">
                                                 <label for="note-title" class="col-form-label">URL</label>

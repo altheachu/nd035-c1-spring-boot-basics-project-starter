@@ -9,12 +9,14 @@ import java.util.List;
 @Mapper
 public interface CredentialMapper {
 
-    @Insert("INSERT INTO Credential(url, username, key, password, userId) VALUES(#{url}, #{username}, #{key}, #{password}, #{userId})")
+    @Insert("INSERT INTO Credentials(url, username, key, password, userId) VALUES(#{url}, #{username}, #{key}, #{password}, #{userId})")
     @Options(useGeneratedKeys = true, keyProperty = "credentialId")
-    int addNote(Credential credential);
+    int addCredential(Credential credential);
 
-    @Select("SELECT * FROM Credential WHERE userId = #{userId}")
-    List<Note> getCredentialForUser(Integer userId);
+    @Select("SELECT * FROM Credentials WHERE userId = #{userId}")
+    List<Credential> getCredentialForUser(Integer userId);
 
+    @Update("\"update CREDENTIALS SET url=#{url}, username =#{username}, key =#{key}, password =#{password} where credentialid =#{credentialid}\"")
+    int updateCredential(Credential credential);
 
 }
