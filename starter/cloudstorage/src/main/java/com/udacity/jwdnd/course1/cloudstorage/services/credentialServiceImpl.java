@@ -34,6 +34,10 @@ public class credentialServiceImpl {
         credentialMapper.updateCredential(credential);
     }
 
+    public void deleteNote(Integer credentialId){
+        credentialMapper.deleteCredential(credentialId);
+    }
+
     private void encryptPassword(Credential credential) {
         SecureRandom random = new SecureRandom();
         byte[] key = new byte[16];
