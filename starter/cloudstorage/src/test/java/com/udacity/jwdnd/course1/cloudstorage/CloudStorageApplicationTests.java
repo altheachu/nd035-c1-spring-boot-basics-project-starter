@@ -13,6 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 
 import java.io.File;
+
+import static java.lang.Thread.sleep;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CloudStorageApplicationTests {
 
@@ -39,10 +42,32 @@ class CloudStorageApplicationTests {
 	}
 
 	@Test
-	public void getLoginPage() {
+	public void getLoginPage() throws InterruptedException {
+
+		//安全性測試
+
+		// 登入
 		driver.get("http://localhost:" + this.port + "/login");
 		Assertions.assertEquals("Login", driver.getTitle());
+		// 註冊
+		driver.get("http://localhost:" + this.port + "/signup");
+		Assertions.assertEquals("Sign Up", driver.getTitle());
+		// 首頁
+		driver.get("http://localhost:" + this.port + "/home");
+		Assertions.assertNotEquals("Home", driver.getTitle());
+
 	}
+
+	// 測試註冊功能
+	@Test
+	public void testSignupSuccess() {
+
+		driver.get("http://localhost:" + this.port + "/signup");
+		SignupPage signupPage = new SignupPage(driver);
+		signupPage.signup("a","c","1","2");
+
+	}
+
 
 	/**
 	 * PLEASE DO NOT DELETE THIS method.
